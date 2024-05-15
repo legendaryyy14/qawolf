@@ -1,5 +1,6 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
 const { chromium } = require("playwright");
+const { createObjectCsvWriter } = require("csv-writer");
 
 async function saveHackerNewsArticles() {
   // launch browser
@@ -11,16 +12,16 @@ async function saveHackerNewsArticles() {
   await page.goto("https://news.ycombinator.com");
 
   // Wait for the list of articles to load
-  await page.waitForSelector(".title");
+  await page.waitForSelector(".athing");
 
   // Extract top 10 articles
   const articles = await page.evaluate(() => {
     const articles = [];
     const items = document.querySelectorAll(".athing");
     for (let i = 0; i < items.length && i < 10; i++) {
-      const titleElement = items[i].querySelector(".titlelink");
-      const title = titleElement.textContent.trim();
-      const url = titleElement.href;
+      const titleElement = items[i].querySelector(".storylink");
+      const title = titleElement ? titleElement.textContent.trim() : "N/A";
+      const url = titleElement ? titleElement.href : "N/A";
       articles.push({ title, url });
     }
     return articles;
