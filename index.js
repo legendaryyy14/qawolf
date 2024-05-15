@@ -18,10 +18,11 @@ async function saveHackerNewsArticles() {
   const articles = await page.evaluate(() => {
     const articles = [];
     const items = document.querySelectorAll(".athing");
+    console.log('items:', items)
     for (let i = 0; i < items.length && i < 10; i++) {
-      const titleElement = items[i].querySelector(".storylink");
-      const title = titleElement ? titleElement.textContent.trim() : "N/A";
-      const url = titleElement ? titleElement.href : "N/A";
+      const titleElement = items[i].querySelector(".titleline");
+      const title = titleElement.textContent.trim();
+      const url = titleElement.href;
       articles.push({ title, url });
     }
     return articles;
