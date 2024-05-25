@@ -9,7 +9,7 @@ async function saveHackerNewsArticles() {
   const page = await context.newPage();
 
   // go to Hacker News
-  // await page.goto("https://news.ycombinator.com");
+  await page.goto("https://news.ycombinator.com");
 
   // Wait for the list of articles to load
   await page.waitForSelector(".athing");
