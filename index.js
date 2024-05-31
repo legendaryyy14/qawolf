@@ -12,7 +12,7 @@ async function saveHackerNewsArticles() {
   await page.goto("https://news.ycombinator.com");
 
   // Wait for the list of articles to load
-  await page.waitForSelector(".athing");
+  // await page.waitForSelector(".athing");
 
   // Extract top 10 articles
   const articles = await page.evaluate(() => {
